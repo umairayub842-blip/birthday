@@ -757,18 +757,16 @@ h1, h2, h3, h4 {
 
 .gallery-grid {
   display: grid;
-  grid-template-columns: 1fr;
-  gap: 1.75rem;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.15rem;
   margin-top: 1.5rem;
-  max-width: 520px;
-  margin-left: auto;
-  margin-right: auto;
+  max-width: 100%;
 }
 
 .gallery-item {
   background: rgba(58, 11, 27, 0.95);
-  border-radius: 20px;
-  padding: 0.85rem 0.85rem 1.15rem;
+  border-radius: 18px;
+  padding: 0.7rem 0.7rem 1rem;
   box-shadow: var(--shadow-sm);
   border: 1px solid var(--border-delicate);
   cursor: pointer;
@@ -796,7 +794,7 @@ h1, h2, h3, h4 {
   position: relative;
   width: 100%;
   aspect-ratio: 4 / 5;
-  border-radius: 16px;
+  border-radius: 14px;
   overflow: hidden;
   background: #250510;
 }
@@ -812,42 +810,46 @@ h1, h2, h3, h4 {
 
 .gallery-overlay-badge {
   position: absolute;
-  bottom: 10px;
-  right: 10px;
+  bottom: 8px;
+  right: 8px;
   background: rgba(18, 2, 7, 0.88);
   color: #FFFFFF;
-  border: 1px solid rgba(255, 180, 200, 0.25);
+  border: 1px solid rgba(255, 180, 205, 0.25);
   border-radius: var(--radius-full);
-  padding: 0.28rem 0.75rem;
-  font-size: 0.78rem;
+  padding: 0.22rem 0.65rem;
+  font-size: 0.72rem;
   font-weight: 500;
   display: flex;
   align-items: center;
-  gap: 0.35rem;
+  gap: 0.3rem;
   pointer-events: none;
 }
 
 .gallery-caption-bar {
-  padding: 0.85rem 0.35rem 0.15rem;
+  padding: 0.65rem 0.25rem 0.1rem;
   text-align: left;
 }
 
 .gallery-caption-bar .memory-number {
-  font-size: 0.82rem;
+  font-size: 0.76rem;
   font-weight: 700;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
   color: #FF85A2;
   display: block;
-  margin-bottom: 0.35rem;
+  margin-bottom: 0.25rem;
 }
 
 .gallery-caption-bar .memory-note {
-  font-size: 0.95rem;
+  font-size: 0.84rem;
   color: #FFF0F3;
   font-weight: 500;
-  line-height: 1.55;
-  display: block;
+  line-height: 1.45;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
   word-break: break-word;
 }
 
@@ -1021,21 +1023,25 @@ h1, h2, h3, h4 {
 }
 
 .messages-grid {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  max-width: 680px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.15rem;
+  max-width: 900px;
   margin: 0 auto;
 }
 
 .message-card {
   background: var(--bg-card);
   border: 1px solid var(--border-light);
-  border-radius: 20px;
-  padding: 1.6rem 1.4rem;
+  border-radius: 18px;
+  padding: 1.35rem 1.1rem;
   box-shadow: var(--shadow-sm);
   position: relative;
   touch-action: pan-y;
+}
+
+.message-card.span-two {
+  grid-column: span 2;
 }
 
 @media (hover: hover) {
@@ -1053,20 +1059,20 @@ h1, h2, h3, h4 {
 .message-card-inner {
   display: flex;
   align-items: flex-start;
-  gap: 1rem;
+  gap: 0.85rem;
 }
 
 .message-icon-bubble {
   flex-shrink: 0;
-  width: 48px;
-  height: 48px;
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
   background: linear-gradient(135deg, #5C1028 0%, #3B0819 100%);
   border: 1px solid var(--border-delicate);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.4rem;
+  font-size: 1.3rem;
   box-shadow: inset 0 2px 4px rgba(255, 160, 185, 0.2), 0 4px 12px rgba(10, 1, 5, 0.4);
 }
 
@@ -1076,19 +1082,19 @@ h1, h2, h3, h4 {
 
 .message-text {
   font-family: var(--font-heading);
-  font-size: clamp(1.05rem, 3.8vw, 1.24rem);
+  font-size: clamp(0.95rem, 3vw, 1.15rem);
   font-style: italic;
   color: #FFF0F3;
-  line-height: 1.6;
-  margin-bottom: 0.45rem;
+  line-height: 1.55;
+  margin-bottom: 0.35rem;
 }
 
 .message-author {
-  font-size: 0.82rem;
+  font-size: 0.78rem;
   font-weight: 600;
   color: #FF85A2;
   text-transform: uppercase;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.05em;
 }
 
 /* ============================================================
@@ -1100,22 +1106,22 @@ h1, h2, h3, h4 {
 }
 
 .songs-grid {
-  display: flex;
-  flex-direction: column;
-  gap: 1.35rem;
-  max-width: 780px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.15rem;
+  max-width: 900px;
   margin: 0 auto;
 }
 
 .song-card {
   background: var(--bg-card);
   border: 1px solid var(--border-light);
-  border-radius: 20px;
-  padding: 1.45rem 1.35rem;
+  border-radius: 18px;
+  padding: 1.25rem 1rem;
   box-shadow: var(--shadow-sm);
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 0.85rem;
   position: relative;
   overflow: hidden;
   touch-action: pan-y;
@@ -1136,14 +1142,14 @@ h1, h2, h3, h4 {
 .song-card-header {
   display: flex;
   align-items: center;
-  gap: 0.95rem;
+  gap: 0.75rem;
   width: 100%;
 }
 
 .song-vinyl-wrapper {
   position: relative;
-  width: 60px;
-  height: 60px;
+  width: 48px;
+  height: 48px;
   flex-shrink: 0;
   display: flex;
   align-items: center;
@@ -1151,8 +1157,8 @@ h1, h2, h3, h4 {
 }
 
 .song-vinyl {
-  width: 60px;
-  height: 60px;
+  width: 48px;
+  height: 48px;
   border-radius: 50%;
   background: radial-gradient(circle, #22050E 24%, #420B1D 26%, #150208 42%, #420B1D 44%, #18030B 68%, #360817 70%, #0E0105 100%);
   border: 1.5px solid rgba(255, 180, 205, 0.35);
@@ -1173,15 +1179,15 @@ h1, h2, h3, h4 {
 }
 
 .song-vinyl-center {
-  width: 20px;
-  height: 20px;
+  width: 16px;
+  height: 16px;
   border-radius: 50%;
   background: #C92A54;
   border: 2px solid #F3C68F;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 0.65rem;
+  font-size: 0.55rem;
 }
 
 .song-meta {
@@ -1192,13 +1198,13 @@ h1, h2, h3, h4 {
 .song-header-row {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  margin-bottom: 0.2rem;
+  gap: 0.35rem;
+  margin-bottom: 0.15rem;
 }
 
 .song-title {
   font-family: var(--font-heading);
-  font-size: clamp(1.15rem, 4.2vw, 1.35rem);
+  font-size: clamp(1rem, 3.2vw, 1.25rem);
   font-weight: 600;
   color: #FFF0F3;
   line-height: 1.25;
@@ -1208,17 +1214,17 @@ h1, h2, h3, h4 {
 }
 
 .song-artist {
-  font-size: 0.92rem;
+  font-size: 0.82rem;
   color: #FF85A2;
   font-weight: 600;
 }
 
 .song-personal-note {
-  font-size: clamp(0.95rem, 3.4vw, 1.05rem);
+  font-size: clamp(0.82rem, 2.6vw, 0.94rem);
   color: #F8DCE3;
-  line-height: 1.6;
+  line-height: 1.55;
   font-style: italic;
-  padding: 0.85rem 1.05rem;
+  padding: 0.65rem 0.85rem;
   background: rgba(30, 4, 14, 0.55);
   border-left: 2.5px solid #FF7597;
   border-radius: 0 10px 10px 0;
@@ -1228,13 +1234,13 @@ h1, h2, h3, h4 {
 .song-actions {
   display: flex;
   align-items: center;
-  gap: 0.65rem;
+  gap: 0.45rem;
   flex-shrink: 0;
 }
 
 .song-play-btn {
-  width: 50px;
-  height: 50px;
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
   background: linear-gradient(135deg, #C92A54 0%, #8E1635 100%);
   border: 1.5px solid rgba(255, 180, 205, 0.4);
@@ -1242,7 +1248,7 @@ h1, h2, h3, h4 {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.15rem;
+  font-size: 1.05rem;
   cursor: pointer;
   box-shadow: 0 4px 14px rgba(201, 42, 84, 0.4);
   transition: var(--transition-smooth);
