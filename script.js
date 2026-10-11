@@ -16,13 +16,17 @@ document.addEventListener('DOMContentLoaded', () => {
     let width = (ambientCanvas.width = window.innerWidth);
     let height = (ambientCanvas.height = window.innerHeight);
 
+    let resizeRaf = null;
     window.addEventListener('resize', () => {
-      width = ambientCanvas.width = window.innerWidth;
-      height = ambientCanvas.height = window.innerHeight;
-    });
+      if (resizeRaf) cancelAnimationFrame(resizeRaf);
+      resizeRaf = requestAnimationFrame(() => {
+        width = ambientCanvas.width = window.innerWidth;
+        height = ambientCanvas.height = window.innerHeight;
+      });
+    }, { passive: true });
 
     const particles = [];
-    const maxParticles = window.innerWidth < 600 ? 24 : 45;
+    const maxParticles = window.innerWidth < 600 ? 16 : (window.innerWidth < 1024 ? 26 : 38);
 
     class FloatingParticle {
       constructor() {
@@ -384,6 +388,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
           if (audioSrc && audioSrc.trim() !== '') {
             currentSongAudio = new Audio(audioSrc);
+            currentSongAudio.preload = 'none';
             currentSongAudio.play().catch(() => {
               playCelebrationChords();
             });
@@ -445,10 +450,14 @@ document.addEventListener('DOMContentLoaded', () => {
     confettiCtx = confettiCanvas.getContext('2d');
     confettiCanvas.width = window.innerWidth;
     confettiCanvas.height = window.innerHeight;
+    let confettiResizeRaf = null;
     window.addEventListener('resize', () => {
-      confettiCanvas.width = window.innerWidth;
-      confettiCanvas.height = window.innerHeight;
-    });
+      if (confettiResizeRaf) cancelAnimationFrame(confettiResizeRaf);
+      confettiResizeRaf = requestAnimationFrame(() => {
+        confettiCanvas.width = window.innerWidth;
+        confettiCanvas.height = window.innerHeight;
+      });
+    }, { passive: true });
   }
 
   let activeConfetti = [];
@@ -648,6 +657,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let isMusicPlaying = false;
   let synthMusicInterval = null;
   const customAudio = new Audio('audio/music.mp3'); // Optional user file
+  customAudio.preload = 'none';
 
   if (audioToggleBtn) {
     audioToggleBtn.addEventListener('click', () => {

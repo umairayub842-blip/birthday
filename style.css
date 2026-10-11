@@ -768,6 +768,8 @@ h1, h2, h3, h4 {
   position: relative;
   overflow: hidden;
   touch-action: manipulation;
+  content-visibility: auto;
+  contain-intrinsic-size: 260px;
 }
 
 .gallery-item:hover,
@@ -1035,6 +1037,8 @@ h1, h2, h3, h4 {
   box-shadow: var(--shadow-sm);
   position: relative;
   transition: var(--transition-smooth);
+  content-visibility: auto;
+  contain-intrinsic-size: 140px;
 }
 
 .message-card:hover,
@@ -1112,23 +1116,32 @@ h1, h2, h3, h4 {
   box-shadow: var(--shadow-sm);
   transition: var(--transition-smooth);
   display: flex;
-  align-items: center;
-  gap: 1.15rem;
+  flex-direction: column;
+  gap: 0.85rem;
   position: relative;
   overflow: hidden;
+  content-visibility: auto;
+  contain-intrinsic-size: 160px;
 }
 
 .song-card:hover {
   transform: translateY(-3px);
-  box-shadow: var(--shadow-md), 0 0 22px rgba(201, 42, 84, 0.28);
+  box-shadow: var(--shadow-md), 0 0 24px rgba(201, 42, 84, 0.3);
   border-color: #FF85A2;
   background: var(--bg-card-hover);
 }
 
+.song-card-header {
+  display: flex;
+  align-items: center;
+  gap: 0.95rem;
+  width: 100%;
+}
+
 .song-vinyl-wrapper {
   position: relative;
-  width: 54px;
-  height: 54px;
+  width: 52px;
+  height: 52px;
   flex-shrink: 0;
   display: flex;
   align-items: center;
@@ -1136,8 +1149,8 @@ h1, h2, h3, h4 {
 }
 
 .song-vinyl {
-  width: 54px;
-  height: 54px;
+  width: 52px;
+  height: 52px;
   border-radius: 50%;
   background: radial-gradient(circle, #22050E 24%, #420B1D 26%, #150208 42%, #420B1D 44%, #18030B 68%, #360817 70%, #0E0105 100%);
   border: 1.5px solid rgba(255, 180, 205, 0.35);
@@ -1169,7 +1182,7 @@ h1, h2, h3, h4 {
   font-size: 0.6rem;
 }
 
-.song-info {
+.song-meta {
   flex: 1;
   min-width: 0;
 }
@@ -1177,36 +1190,36 @@ h1, h2, h3, h4 {
 .song-header-row {
   display: flex;
   align-items: center;
-  justify-content: space-between;
   gap: 0.5rem;
   margin-bottom: 0.2rem;
 }
 
 .song-title {
   font-family: var(--font-heading);
-  font-size: clamp(1.02rem, 3.8vw, 1.22rem);
+  font-size: clamp(1.02rem, 3.8vw, 1.25rem);
   font-weight: 600;
   color: #FFF0F3;
-  line-height: 1.3;
+  line-height: 1.25;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .song-artist {
   font-size: 0.82rem;
   color: #FF85A2;
   font-weight: 600;
-  margin-bottom: 0.35rem;
 }
 
 .song-personal-note {
-  font-size: clamp(0.85rem, 3vw, 0.92rem);
+  font-size: clamp(0.85rem, 3vw, 0.94rem);
   color: #F8DCE3;
-  line-height: 1.55;
+  line-height: 1.6;
   font-style: italic;
-  padding: 0.4rem 0.75rem;
+  padding: 0.65rem 0.9rem;
   background: rgba(30, 4, 14, 0.55);
   border-left: 2.5px solid #FF7597;
-  border-radius: 0 8px 8px 0;
-  margin-top: 0.35rem;
+  border-radius: 0 10px 10px 0;
   word-break: break-word;
 }
 
@@ -1218,16 +1231,16 @@ h1, h2, h3, h4 {
 }
 
 .song-play-btn {
-  width: 42px;
-  height: 42px;
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
   background: linear-gradient(135deg, #C92A54 0%, #8E1635 100%);
-  border: 1px solid rgba(255, 180, 205, 0.4);
+  border: 1.5px solid rgba(255, 180, 205, 0.4);
   color: #FFFFFF;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1rem;
+  font-size: 1.05rem;
   cursor: pointer;
   box-shadow: 0 4px 14px rgba(201, 42, 84, 0.4);
   transition: var(--transition-smooth);
@@ -1472,6 +1485,12 @@ h1, h2, h3, h4 {
     padding: 3rem 1.85rem;
   }
 
+  .songs-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+  }
+
   /* Desktop Lightbox Navigation: outside the box */
   .lightbox-content-box {
     padding: 1rem 1rem 1.25rem;
@@ -1530,6 +1549,50 @@ h1, h2, h3, h4 {
 
   .lightbox-next {
     right: -28px;
+  }
+}
+
+/* Laptop & Desktop High-DPI Displays (>= 1024px) */
+@media (min-width: 1024px) {
+  .container {
+    max-width: 1140px;
+    padding: 0 2rem;
+  }
+
+  .hero-envelope-card {
+    padding: 3.5rem 2.5rem;
+    max-width: 640px;
+  }
+
+  .birthday-card {
+    padding: 3.25rem 2.5rem;
+  }
+
+  .gallery-grid {
+    gap: 1.6rem;
+  }
+
+  .gallery-item:hover {
+    transform: translateY(-6px) scale(1.02);
+  }
+
+  .songs-grid {
+    gap: 1.6rem;
+    max-width: 1040px;
+  }
+}
+
+/* Reduced Motion for Battery and Performance */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  #ambient-canvas,
+  #confetti-canvas {
+    display: none !important;
   }
 }
 

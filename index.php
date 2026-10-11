@@ -304,6 +304,7 @@ $wish_reveal_body  = "Close your eyes, take a gentle breath, and make the bigges
                   src="<?php echo htmlspecialchars($photo['file']); ?>" 
                   alt="<?php echo htmlspecialchars($photo['caption']); ?>" 
                   loading="lazy"
+                  decoding="async"
                 >
                 <div class="gallery-overlay-badge">
                   <span>✨ Tap to view</span>
@@ -364,33 +365,36 @@ $wish_reveal_body  = "Close your eyes, take a gentle breath, and make the bigges
         <div class="songs-grid">
           <?php foreach ($reminding_songs as $index => $song): ?>
             <div class="song-card reveal-on-scroll delay-<?php echo ($index % 3) + 1; ?>" data-song-index="<?php echo $index; ?>" data-audio-src="<?php echo htmlspecialchars($song['audio'] ?? ''); ?>">
-              <div class="song-vinyl-wrapper">
-                <div class="song-vinyl">
-                  <div class="song-vinyl-center">❤️</div>
-                </div>
-              </div>
-
-              <div class="song-info">
-                <div class="song-header-row">
-                  <h3 class="song-title"><?php echo htmlspecialchars($song['title']); ?></h3>
-                  <div class="song-equalizer" aria-hidden="true">
-                    <span class="eq-bar"></span>
-                    <span class="eq-bar"></span>
-                    <span class="eq-bar"></span>
-                    <span class="eq-bar"></span>
+              <div class="song-card-header">
+                <div class="song-vinyl-wrapper">
+                  <div class="song-vinyl">
+                    <div class="song-vinyl-center">❤️</div>
                   </div>
                 </div>
-                <div class="song-artist"><?php echo htmlspecialchars($song['artist']); ?></div>
-                <?php if (!empty($song['note'])): ?>
-                  <p class="song-personal-note">“<?php echo htmlspecialchars($song['note']); ?>”</p>
-                <?php endif; ?>
+
+                <div class="song-meta">
+                  <div class="song-header-row">
+                    <h3 class="song-title"><?php echo htmlspecialchars($song['title']); ?></h3>
+                    <div class="song-equalizer" aria-hidden="true">
+                      <span class="eq-bar"></span>
+                      <span class="eq-bar"></span>
+                      <span class="eq-bar"></span>
+                      <span class="eq-bar"></span>
+                    </div>
+                  </div>
+                  <div class="song-artist"><?php echo htmlspecialchars($song['artist']); ?></div>
+                </div>
+
+                <div class="song-actions">
+                  <button class="song-play-btn" title="Play song" aria-label="Play <?php echo htmlspecialchars($song['title']); ?>">
+                    <span class="play-icon">▶</span>
+                  </button>
+                </div>
               </div>
 
-              <div class="song-actions">
-                <button class="song-play-btn" title="Play song preview" aria-label="Play <?php echo htmlspecialchars($song['title']); ?>">
-                  <span class="play-icon">▶</span>
-                </button>
-              </div>
+              <?php if (!empty($song['note'])): ?>
+                <p class="song-personal-note">“<?php echo htmlspecialchars($song['note']); ?>”</p>
+              <?php endif; ?>
             </div>
           <?php endforeach; ?>
         </div>
