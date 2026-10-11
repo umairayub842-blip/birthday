@@ -107,7 +107,7 @@ $wish_reveal_body  = "Close your eyes, take a gentle breath, and make the bigges
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=1024">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
   <title>Happy Birthday, <?php echo htmlspecialchars($girlfriend_name); ?> ❤️</title>
   
   <!-- Favicon Heart -->
