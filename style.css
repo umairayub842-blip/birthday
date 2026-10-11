@@ -8,8 +8,8 @@
   /* Rich Wine Red / Burgundy Luxury Palette */
   --bg-primary: #22050E;
   --bg-gradient: linear-gradient(180deg, #1C030B 0%, #2C0715 18%, #3A0A1C 38%, #480D23 62%, #320718 85%, #18020A 100%);
-  --bg-card: rgba(58, 11, 27, 0.88);
-  --bg-card-hover: rgba(75, 15, 36, 0.95);
+  --bg-card: rgba(56, 10, 26, 0.96);
+  --bg-card-hover: rgba(75, 15, 36, 0.98);
   
   --primary-rose: #C92A54;
   --primary-rose-glow: rgba(201, 42, 84, 0.45);
@@ -57,9 +57,9 @@
 }
 
 html {
-  scroll-behavior: smooth;
   font-size: 16px;
   -webkit-text-size-adjust: 100%;
+  -webkit-overflow-scrolling: touch;
 }
 
 body {
@@ -73,6 +73,8 @@ body {
   min-height: 100dvh;
   padding-left: env(safe-area-inset-left, 0px);
   padding-right: env(safe-area-inset-right, 0px);
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-y;
 }
 
 /* --- Background Ambient Canvas --- */
@@ -86,6 +88,7 @@ body {
   height: 100dvh;
   pointer-events: none;
   z-index: 1;
+  transform: translateZ(0);
 }
 
 #confetti-canvas {
@@ -98,7 +101,7 @@ body {
   z-index: 2;
   width: 100%;
   max-width: 100%;
-  overflow: hidden;
+  overflow-x: clip;
 }
 
 /* Mobile-first Container */
@@ -230,23 +233,22 @@ h1, h2, h3, h4 {
   display: flex;
   align-items: center;
   gap: 0.45rem;
-  background: rgba(62, 13, 30, 0.92);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  background: rgba(48, 8, 22, 0.95);
   border: 1px solid var(--border-delicate);
   padding: 0.55rem 1rem;
   min-height: 42px;
   border-radius: var(--radius-full);
   box-shadow: var(--shadow-floating);
   cursor: pointer;
-  transition: var(--transition-smooth);
+  transition: transform 0.2s ease, background 0.2s ease;
   touch-action: manipulation;
+  transform: translateZ(0);
 }
 
 .floating-audio-ctrl:hover,
 .floating-audio-ctrl:active {
-  transform: scale(1.05);
-  background: rgba(85, 18, 42, 0.96);
+  transform: translateZ(0) scale(1.04);
+  background: rgba(85, 18, 42, 0.98);
   border-color: rgba(255, 160, 185, 0.5);
 }
 
@@ -293,8 +295,6 @@ h1, h2, h3, h4 {
   width: 100%;
   max-width: 460px;
   background: var(--bg-card);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
   border: 1px solid var(--border-light);
   border-radius: var(--radius-lg);
   padding: 2.25rem 1.35rem;
@@ -366,8 +366,6 @@ h1, h2, h3, h4 {
 
 .birthday-card {
   background: var(--bg-card);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
   border: 1px solid var(--border-light);
   border-radius: var(--radius-lg);
   padding: 2.15rem 1.25rem;
@@ -758,26 +756,30 @@ h1, h2, h3, h4 {
 }
 
 .gallery-item {
-  background: rgba(62, 13, 29, 0.92);
+  background: rgba(58, 11, 27, 0.95);
   border-radius: 16px;
   padding: 0.5rem 0.5rem 0.75rem;
   box-shadow: var(--shadow-sm);
   border: 1px solid var(--border-delicate);
   cursor: pointer;
-  transition: var(--transition-smooth);
   position: relative;
   overflow: hidden;
-  touch-action: manipulation;
-  content-visibility: auto;
-  contain-intrinsic-size: 260px;
+  touch-action: pan-y;
 }
 
-.gallery-item:hover,
-.gallery-item:active {
-  transform: translateY(-3px);
-  box-shadow: var(--shadow-md), 0 0 18px rgba(201, 42, 84, 0.35);
-  border-color: #FF85A2;
-  background: rgba(76, 16, 36, 0.98);
+@media (hover: hover) {
+  .gallery-item {
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  }
+  .gallery-item:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md), 0 0 18px rgba(201, 42, 84, 0.35);
+    border-color: #FF85A2;
+    background: rgba(76, 16, 36, 0.98);
+  }
+  .gallery-item:hover .gallery-thumb-wrapper img {
+    transform: scale(1.04);
+  }
 }
 
 .gallery-thumb-wrapper {
@@ -795,23 +797,16 @@ h1, h2, h3, h4 {
   object-fit: cover;
   object-position: center;
   display: block;
-  transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
   -webkit-touch-callout: none;
-}
-
-.gallery-item:hover .gallery-thumb-wrapper img {
-  transform: scale(1.04);
 }
 
 .gallery-overlay-badge {
   position: absolute;
   bottom: 6px;
   right: 6px;
-  background: rgba(20, 2, 8, 0.75);
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
+  background: rgba(18, 2, 7, 0.88);
   color: #FFFFFF;
-  border: 1px solid rgba(255, 180, 200, 0.2);
+  border: 1px solid rgba(255, 180, 200, 0.25);
   border-radius: var(--radius-full);
   padding: 0.18rem 0.55rem;
   font-size: 0.68rem;
@@ -1029,24 +1024,24 @@ h1, h2, h3, h4 {
 
 .message-card {
   background: var(--bg-card);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
   border: 1px solid var(--border-light);
   border-radius: var(--radius-md);
   padding: 1.35rem 1.15rem;
   box-shadow: var(--shadow-sm);
   position: relative;
-  transition: var(--transition-smooth);
-  content-visibility: auto;
-  contain-intrinsic-size: 140px;
+  touch-action: pan-y;
 }
 
-.message-card:hover,
-.message-card:active {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-md), 0 0 20px rgba(201, 42, 84, 0.25);
-  border-color: #FF85A2;
-  background: var(--bg-card-hover);
+@media (hover: hover) {
+  .message-card {
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  }
+  .message-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md), 0 0 20px rgba(201, 42, 84, 0.25);
+    border-color: #FF85A2;
+    background: var(--bg-card-hover);
+  }
 }
 
 .message-card-inner {
@@ -1108,27 +1103,28 @@ h1, h2, h3, h4 {
 
 .song-card {
   background: var(--bg-card);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
   border: 1px solid var(--border-light);
   border-radius: var(--radius-md);
   padding: 1.25rem 1.15rem;
   box-shadow: var(--shadow-sm);
-  transition: var(--transition-smooth);
   display: flex;
   flex-direction: column;
   gap: 0.85rem;
   position: relative;
   overflow: hidden;
-  content-visibility: auto;
-  contain-intrinsic-size: 160px;
+  touch-action: pan-y;
 }
 
-.song-card:hover {
-  transform: translateY(-3px);
-  box-shadow: var(--shadow-md), 0 0 24px rgba(201, 42, 84, 0.3);
-  border-color: #FF85A2;
-  background: var(--bg-card-hover);
+@media (hover: hover) {
+  .song-card {
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  }
+  .song-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md), 0 0 24px rgba(201, 42, 84, 0.3);
+    border-color: #FF85A2;
+    background: var(--bg-card-hover);
+  }
 }
 
 .song-card-header {
@@ -1431,9 +1427,8 @@ h1, h2, h3, h4 {
    ============================================================ */
 .reveal-on-scroll {
   opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1), transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: opacity, transform;
+  transform: translateY(14px);
+  transition: opacity 0.35s ease-out, transform 0.35s ease-out;
 }
 
 .reveal-on-scroll.is-visible {
@@ -1441,11 +1436,13 @@ h1, h2, h3, h4 {
   transform: translateY(0);
 }
 
-/* Stagger delay helpers */
-.delay-1 { transition-delay: 0.08s; }
-.delay-2 { transition-delay: 0.16s; }
-.delay-3 { transition-delay: 0.24s; }
-.delay-4 { transition-delay: 0.32s; }
+/* Stagger delay helpers for tablets & desktops */
+@media (min-width: 640px) {
+  .delay-1 { transition-delay: 0.05s; }
+  .delay-2 { transition-delay: 0.1s; }
+  .delay-3 { transition-delay: 0.15s; }
+  .delay-4 { transition-delay: 0.2s; }
+}
 
 /* ============================================================
    TABLET & DESKTOP MEDIA QUERIES (Scale Up Nicely)
