@@ -118,10 +118,39 @@ $wish_reveal_body  = "Close your eyes, take a gentle breath, and make the bigges
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Sacramento&display=swap" rel="stylesheet">
 
-  <!-- Stylesheet (Cache Busted) -->
-  <link rel="stylesheet" href="style.css?v=4.0">
+  <!-- High-Priority Image Preloads for Instant Mobile Viewing -->
+  <?php foreach (array_slice($gallery_photos, 0, 4) as $photo): 
+    $webpPreload = preg_replace('/\.(jpg|jpeg|png)$/i', '.webp', $photo['file']);
+  ?>
+  <link rel="preload" as="image" href="<?php echo htmlspecialchars($webpPreload); ?>" type="image/webp" fetchpriority="high">
+  <?php endforeach; ?>
+
+  <!-- Stylesheet (Cache Busted v5.0) -->
+  <link rel="stylesheet" href="style.css?v=5.0">
 </head>
 <body>
+
+  <!-- Instant Parallel Background Preload for All Gallery Photos -->
+  <script>
+    (function() {
+      var photoSources = [
+        <?php 
+          $sources = array_map(function($p) {
+            $webp = preg_replace('/\.(jpg|jpeg|png)$/i', '.webp', $p['file']);
+            return "'" . addslashes($webp) . "'";
+          }, $gallery_photos);
+          echo implode(",\n        ", $sources);
+        ?>
+      ];
+      window.__preloadedImages = [];
+      for (var i = 0; i < photoSources.length; i++) {
+        var img = new Image();
+        img.decoding = 'async';
+        img.src = photoSources[i];
+        window.__preloadedImages.push(img);
+      }
+    })();
+  </script>
 
   <!-- Floating Ambient Canvas (Gentle floating hearts & sparkles) -->
   <canvas id="ambient-canvas"></canvas>
@@ -297,15 +326,24 @@ $wish_reveal_body  = "Close your eyes, take a gentle breath, and make the bigges
         </div>
 
         <div class="gallery-grid">
-          <?php foreach ($gallery_photos as $index => $photo): ?>
+          <?php foreach ($gallery_photos as $index => $photo): 
+            $webpPath = preg_replace('/\.(jpg|jpeg|png)$/i', '.webp', $photo['file']);
+            $hasWebp = file_exists(__DIR__ . '/' . $webpPath);
+          ?>
             <div class="gallery-item reveal-on-scroll delay-<?php echo ($index % 4) + 1; ?>" data-index="<?php echo $index; ?>">
               <div class="gallery-thumb-wrapper">
-                <img 
-                  src="<?php echo htmlspecialchars($photo['file']); ?>" 
-                  alt="<?php echo htmlspecialchars($photo['caption']); ?>" 
-                  loading="lazy"
-                  decoding="async"
-                >
+                <picture>
+                  <?php if ($hasWebp): ?>
+                    <source srcset="<?php echo htmlspecialchars($webpPath); ?>" type="image/webp">
+                  <?php endif; ?>
+                  <img 
+                    src="<?php echo htmlspecialchars($photo['file']); ?>" 
+                    alt="<?php echo htmlspecialchars($photo['caption']); ?>" 
+                    loading="eager"
+                    decoding="async"
+                    fetchpriority="<?php echo $index < 4 ? 'high' : 'auto'; ?>"
+                  >
+                </picture>
                 <div class="gallery-overlay-badge">
                   <span>✨ Tap to view</span>
                 </div>
@@ -463,7 +501,7 @@ $wish_reveal_body  = "Close your eyes, take a gentle breath, and make the bigges
     </div>
   </div>
 
-  <!-- JavaScript (Cache Busted) -->
-  <script src="script.js?v=4.0"></script>
+  <!-- JavaScript (Cache Busted v5.0) -->
+  <script src="script.js?v=5.0"></script>
 </body>
 </html>

@@ -220,7 +220,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const title = item.querySelector('.memory-number');
 
     galleryData.push({
-      src: img ? img.getAttribute('src') : '',
+      src: img ? (img.currentSrc || img.getAttribute('src')) : '',
       alt: img ? img.getAttribute('alt') : `Memory ${index + 1}`,
       caption: (note && note.textContent.trim() !== '') ? note.textContent.trim() : (title ? title.textContent : `Memory #${index + 1}`),
       tag: title ? title.textContent : `MEMORY #${index + 1}`
@@ -250,6 +250,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!current) return;
 
     if (lightboxImg) {
+      lightboxImg.decoding = 'async';
       lightboxImg.src = current.src;
       lightboxImg.alt = current.alt;
     }
@@ -258,6 +259,18 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     if (lightboxCounter) {
       lightboxCounter.textContent = `${currentPhotoIndex + 1} / ${galleryData.length}`;
+    }
+
+    // Preload next and previous photo in cache for instantaneous navigation
+    const nextPhoto = galleryData[(currentPhotoIndex + 1) % galleryData.length];
+    const prevPhoto = galleryData[(currentPhotoIndex - 1 + galleryData.length) % galleryData.length];
+    if (nextPhoto && nextPhoto.src) {
+      const nextImg = new Image();
+      nextImg.src = nextPhoto.src;
+    }
+    if (prevPhoto && prevPhoto.src) {
+      const prevImg = new Image();
+      prevImg.src = prevPhoto.src;
     }
   }
 

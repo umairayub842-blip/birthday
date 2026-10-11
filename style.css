@@ -796,7 +796,20 @@ h1, h2, h3, h4 {
   aspect-ratio: 4 / 5;
   border-radius: 14px;
   overflow: hidden;
-  background: #250510;
+  background: linear-gradient(110deg, #2A0614 8%, #480D23 25%, #2A0614 45%);
+  background-size: 200% 100%;
+  animation: thumbSkeleton 2.2s infinite ease-in-out;
+}
+
+@keyframes thumbSkeleton {
+  0% { background-position: 100% 0; }
+  100% { background-position: -100% 0; }
+}
+
+.gallery-thumb-wrapper picture {
+  display: block;
+  width: 100%;
+  height: 100%;
 }
 
 .gallery-thumb-wrapper img {
@@ -806,6 +819,8 @@ h1, h2, h3, h4 {
   object-position: center;
   display: block;
   -webkit-touch-callout: none;
+  opacity: 1;
+  transition: opacity 0.25s ease, transform 0.25s ease;
 }
 
 .gallery-overlay-badge {

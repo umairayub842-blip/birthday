@@ -13,10 +13,49 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Sacramento&display=swap" rel="stylesheet">
 
-  <!-- Stylesheet (Cache Busted) -->
-  <link rel="stylesheet" href="style.css?v=4.0">
+  <!-- High-Priority Image Preloads for Instant Mobile Viewing -->
+    <link rel="preload" as="image" href="images/Snapchat-899478274.webp" type="image/webp" fetchpriority="high">
+    <link rel="preload" as="image" href="images/IMG_20260727_152056_901.webp" type="image/webp" fetchpriority="high">
+    <link rel="preload" as="image" href="images/IMG_20260724_141503_004.webp" type="image/webp" fetchpriority="high">
+    <link rel="preload" as="image" href="images/Snapchat-481508265.webp" type="image/webp" fetchpriority="high">
+  
+  <!-- Stylesheet (Cache Busted v5.0) -->
+  <link rel="stylesheet" href="style.css?v=5.0">
 </head>
 <body>
+
+  <!-- Instant Parallel Background Preload for All Gallery Photos -->
+  <script>
+    (function() {
+      var photoSources = [
+        'images/Snapchat-899478274.webp',
+        'images/IMG_20260727_152056_901.webp',
+        'images/IMG_20260724_141503_004.webp',
+        'images/Snapchat-481508265.webp',
+        'images/Snapchat-501904059.webp',
+        'images/Snapchat-613069001.webp',
+        'images/Snapchat-857963354.webp',
+        'images/Snapchat-888119596.webp',
+        'images/Snapchat-896823401.webp',
+        'images/Snapchat-563712557.webp',
+        'images/Snapchat-954268958.webp',
+        'images/Snapchat-962441252.webp',
+        'images/Snapchat-1271676970.webp',
+        'images/Snapchat-1281220834.webp',
+        'images/Snapchat-1432715714.webp',
+        'images/Snapchat-1552855786.webp',
+        'images/Snapchat-1644708708.webp',
+        'images/Snapchat-1650370381.webp',
+        'images/Snapchat-2069483531.webp'      ];
+      window.__preloadedImages = [];
+      for (var i = 0; i < photoSources.length; i++) {
+        var img = new Image();
+        img.decoding = 'async';
+        img.src = photoSources[i];
+        window.__preloadedImages.push(img);
+      }
+    })();
+  </script>
 
   <!-- Floating Ambient Canvas (Gentle floating hearts & sparkles) -->
   <canvas id="ambient-canvas"></canvas>
@@ -204,12 +243,16 @@ Lastly, I just want to say: I love you so much, Tazmeen.</p>
         <div class="gallery-grid">
                       <div class="gallery-item reveal-on-scroll delay-1" data-index="0">
               <div class="gallery-thumb-wrapper">
-                <img 
-                  src="images/Snapchat-899478274.jpg" 
-                  alt="The most beautiful woman I have ever seen and want to spend the rest of my life with. Very sassy, has attitude greater than the peak of Mount Everest, but same with her beauty — it’s out of this world! Mmmmm you are so beautiful, wanna kiss this potato face! Ahhh I love you so muchhh 🏔️💋🥔❤️" 
-                  loading="lazy"
-                  decoding="async"
-                >
+                <picture>
+                                      <source srcset="images/Snapchat-899478274.webp" type="image/webp">
+                                    <img 
+                    src="images/Snapchat-899478274.jpg" 
+                    alt="The most beautiful woman I have ever seen and want to spend the rest of my life with. Very sassy, has attitude greater than the peak of Mount Everest, but same with her beauty — it’s out of this world! Mmmmm you are so beautiful, wanna kiss this potato face! Ahhh I love you so muchhh 🏔️💋🥔❤️" 
+                    loading="eager"
+                    decoding="async"
+                    fetchpriority="high"
+                  >
+                </picture>
                 <div class="gallery-overlay-badge">
                   <span>✨ Tap to view</span>
                 </div>
@@ -221,12 +264,16 @@ Lastly, I just want to say: I love you so much, Tazmeen.</p>
             </div>
                       <div class="gallery-item reveal-on-scroll delay-2" data-index="1">
               <div class="gallery-thumb-wrapper">
-                <img 
-                  src="images/IMG_20260727_152056_901.jpg" 
-                  alt="I am that Spider-Man who gets his Gwen in this universe, and the most loveliest, supportive, and caring one 🕷️❤️" 
-                  loading="lazy"
-                  decoding="async"
-                >
+                <picture>
+                                      <source srcset="images/IMG_20260727_152056_901.webp" type="image/webp">
+                                    <img 
+                    src="images/IMG_20260727_152056_901.jpg" 
+                    alt="I am that Spider-Man who gets his Gwen in this universe, and the most loveliest, supportive, and caring one 🕷️❤️" 
+                    loading="eager"
+                    decoding="async"
+                    fetchpriority="high"
+                  >
+                </picture>
                 <div class="gallery-overlay-badge">
                   <span>✨ Tap to view</span>
                 </div>
@@ -238,12 +285,16 @@ Lastly, I just want to say: I love you so much, Tazmeen.</p>
             </div>
                       <div class="gallery-item reveal-on-scroll delay-3" data-index="2">
               <div class="gallery-thumb-wrapper">
-                <img 
-                  src="images/IMG_20260724_141503_004.jpg" 
-                  alt="You are my hello kitty who brighten my world with chaos, though you still make my day and made me love you more everyday 🎀✨" 
-                  loading="lazy"
-                  decoding="async"
-                >
+                <picture>
+                                      <source srcset="images/IMG_20260724_141503_004.webp" type="image/webp">
+                                    <img 
+                    src="images/IMG_20260724_141503_004.jpg" 
+                    alt="You are my hello kitty who brighten my world with chaos, though you still make my day and made me love you more everyday 🎀✨" 
+                    loading="eager"
+                    decoding="async"
+                    fetchpriority="high"
+                  >
+                </picture>
                 <div class="gallery-overlay-badge">
                   <span>✨ Tap to view</span>
                 </div>
@@ -255,12 +306,16 @@ Lastly, I just want to say: I love you so much, Tazmeen.</p>
             </div>
                       <div class="gallery-item reveal-on-scroll delay-4" data-index="3">
               <div class="gallery-thumb-wrapper">
-                <img 
-                  src="images/Snapchat-481508265.jpg" 
-                  alt="Gangster lady who knows how to use guns, so messing with her is not a genius idea — and that makes me like you more! 🔫😎❤️" 
-                  loading="lazy"
-                  decoding="async"
-                >
+                <picture>
+                                      <source srcset="images/Snapchat-481508265.webp" type="image/webp">
+                                    <img 
+                    src="images/Snapchat-481508265.jpg" 
+                    alt="Gangster lady who knows how to use guns, so messing with her is not a genius idea — and that makes me like you more! 🔫😎❤️" 
+                    loading="eager"
+                    decoding="async"
+                    fetchpriority="high"
+                  >
+                </picture>
                 <div class="gallery-overlay-badge">
                   <span>✨ Tap to view</span>
                 </div>
@@ -272,12 +327,16 @@ Lastly, I just want to say: I love you so much, Tazmeen.</p>
             </div>
                       <div class="gallery-item reveal-on-scroll delay-1" data-index="4">
               <div class="gallery-thumb-wrapper">
-                <img 
-                  src="images/Snapchat-501904059.jpg" 
-                  alt="Ahh I love your nose, cheeks, and lips, and I just love it sooo muchhhhhh! You’re so beautiful, they make you even prettier 🥰💋✨" 
-                  loading="lazy"
-                  decoding="async"
-                >
+                <picture>
+                                      <source srcset="images/Snapchat-501904059.webp" type="image/webp">
+                                    <img 
+                    src="images/Snapchat-501904059.jpg" 
+                    alt="Ahh I love your nose, cheeks, and lips, and I just love it sooo muchhhhhh! You’re so beautiful, they make you even prettier 🥰💋✨" 
+                    loading="eager"
+                    decoding="async"
+                    fetchpriority="auto"
+                  >
+                </picture>
                 <div class="gallery-overlay-badge">
                   <span>✨ Tap to view</span>
                 </div>
@@ -289,12 +348,16 @@ Lastly, I just want to say: I love you so much, Tazmeen.</p>
             </div>
                       <div class="gallery-item reveal-on-scroll delay-2" data-index="5">
               <div class="gallery-thumb-wrapper">
-                <img 
-                  src="images/Snapchat-613069001.jpg" 
-                  alt="Ahh you look really adorable in glasses sometimes, and it makes me love you even moreeeeeeee! I love you 👓🥹❤️" 
-                  loading="lazy"
-                  decoding="async"
-                >
+                <picture>
+                                      <source srcset="images/Snapchat-613069001.webp" type="image/webp">
+                                    <img 
+                    src="images/Snapchat-613069001.jpg" 
+                    alt="Ahh you look really adorable in glasses sometimes, and it makes me love you even moreeeeeeee! I love you 👓🥹❤️" 
+                    loading="eager"
+                    decoding="async"
+                    fetchpriority="auto"
+                  >
+                </picture>
                 <div class="gallery-overlay-badge">
                   <span>✨ Tap to view</span>
                 </div>
@@ -306,12 +369,16 @@ Lastly, I just want to say: I love you so much, Tazmeen.</p>
             </div>
                       <div class="gallery-item reveal-on-scroll delay-3" data-index="6">
               <div class="gallery-thumb-wrapper">
-                <img 
-                  src="images/Snapchat-857963354.jpg" 
-                  alt="The faces you make, I love them! You make everything look funny and meaningful, you’re my world 🤪🌍❤️" 
-                  loading="lazy"
-                  decoding="async"
-                >
+                <picture>
+                                      <source srcset="images/Snapchat-857963354.webp" type="image/webp">
+                                    <img 
+                    src="images/Snapchat-857963354.jpg" 
+                    alt="The faces you make, I love them! You make everything look funny and meaningful, you’re my world 🤪🌍❤️" 
+                    loading="eager"
+                    decoding="async"
+                    fetchpriority="auto"
+                  >
+                </picture>
                 <div class="gallery-overlay-badge">
                   <span>✨ Tap to view</span>
                 </div>
@@ -323,12 +390,16 @@ Lastly, I just want to say: I love you so much, Tazmeen.</p>
             </div>
                       <div class="gallery-item reveal-on-scroll delay-4" data-index="7">
               <div class="gallery-thumb-wrapper">
-                <img 
-                  src="images/Snapchat-888119596.jpg" 
-                  alt="The face of an evil bunny who loves to annoy others, but if someone in reply does something, then this joyful cute evil bunny makes a long face, gets mad, and sometimes her eyes get watery... and I can’t bear to see that. Ahh I love you so much! 🐰😈🥺❤️" 
-                  loading="lazy"
-                  decoding="async"
-                >
+                <picture>
+                                      <source srcset="images/Snapchat-888119596.webp" type="image/webp">
+                                    <img 
+                    src="images/Snapchat-888119596.jpg" 
+                    alt="The face of an evil bunny who loves to annoy others, but if someone in reply does something, then this joyful cute evil bunny makes a long face, gets mad, and sometimes her eyes get watery... and I can’t bear to see that. Ahh I love you so much! 🐰😈🥺❤️" 
+                    loading="eager"
+                    decoding="async"
+                    fetchpriority="auto"
+                  >
+                </picture>
                 <div class="gallery-overlay-badge">
                   <span>✨ Tap to view</span>
                 </div>
@@ -340,12 +411,16 @@ Lastly, I just want to say: I love you so much, Tazmeen.</p>
             </div>
                       <div class="gallery-item reveal-on-scroll delay-1" data-index="8">
               <div class="gallery-thumb-wrapper">
-                <img 
-                  src="images/Snapchat-896823401.jpg" 
-                  alt="A very chatpati, joyful Hello Kitty who wants just freedommmmm and do dherrr saari mastii! 🎀💃✨" 
-                  loading="lazy"
-                  decoding="async"
-                >
+                <picture>
+                                      <source srcset="images/Snapchat-896823401.webp" type="image/webp">
+                                    <img 
+                    src="images/Snapchat-896823401.jpg" 
+                    alt="A very chatpati, joyful Hello Kitty who wants just freedommmmm and do dherrr saari mastii! 🎀💃✨" 
+                    loading="eager"
+                    decoding="async"
+                    fetchpriority="auto"
+                  >
+                </picture>
                 <div class="gallery-overlay-badge">
                   <span>✨ Tap to view</span>
                 </div>
@@ -357,12 +432,16 @@ Lastly, I just want to say: I love you so much, Tazmeen.</p>
             </div>
                       <div class="gallery-item reveal-on-scroll delay-2" data-index="9">
               <div class="gallery-thumb-wrapper">
-                <img 
-                  src="images/Snapchat-563712557.jpg" 
-                  alt="Ahhh my muscle lady, you have enough muscle to make your man work for you, and I don’t really like your anger but still I love you 💪😂❤️" 
-                  loading="lazy"
-                  decoding="async"
-                >
+                <picture>
+                                      <source srcset="images/Snapchat-563712557.webp" type="image/webp">
+                                    <img 
+                    src="images/Snapchat-563712557.jpg" 
+                    alt="Ahhh my muscle lady, you have enough muscle to make your man work for you, and I don’t really like your anger but still I love you 💪😂❤️" 
+                    loading="eager"
+                    decoding="async"
+                    fetchpriority="auto"
+                  >
+                </picture>
                 <div class="gallery-overlay-badge">
                   <span>✨ Tap to view</span>
                 </div>
@@ -374,12 +453,16 @@ Lastly, I just want to say: I love you so much, Tazmeen.</p>
             </div>
                       <div class="gallery-item reveal-on-scroll delay-3" data-index="10">
               <div class="gallery-thumb-wrapper">
-                <img 
-                  src="images/Snapchat-954268958.jpg" 
-                  alt="I just love this picture of yours! You look so like... mmm I can’t explain in words, like you make my body tingle, you look so hot here! Ahhhhh I just love you so much 🔥🫠❤️" 
-                  loading="lazy"
-                  decoding="async"
-                >
+                <picture>
+                                      <source srcset="images/Snapchat-954268958.webp" type="image/webp">
+                                    <img 
+                    src="images/Snapchat-954268958.jpg" 
+                    alt="I just love this picture of yours! You look so like... mmm I can’t explain in words, like you make my body tingle, you look so hot here! Ahhhhh I just love you so much 🔥🫠❤️" 
+                    loading="eager"
+                    decoding="async"
+                    fetchpriority="auto"
+                  >
+                </picture>
                 <div class="gallery-overlay-badge">
                   <span>✨ Tap to view</span>
                 </div>
@@ -391,12 +474,16 @@ Lastly, I just want to say: I love you so much, Tazmeen.</p>
             </div>
                       <div class="gallery-item reveal-on-scroll delay-4" data-index="11">
               <div class="gallery-thumb-wrapper">
-                <img 
-                  src="images/Snapchat-962441252.jpg" 
-                  alt="Even without a filter, you look so gorgeous, so beautiful, cannot explain in words! I hope you can understand what I feel for you. Love you ✨🥰❤️" 
-                  loading="lazy"
-                  decoding="async"
-                >
+                <picture>
+                                      <source srcset="images/Snapchat-962441252.webp" type="image/webp">
+                                    <img 
+                    src="images/Snapchat-962441252.jpg" 
+                    alt="Even without a filter, you look so gorgeous, so beautiful, cannot explain in words! I hope you can understand what I feel for you. Love you ✨🥰❤️" 
+                    loading="eager"
+                    decoding="async"
+                    fetchpriority="auto"
+                  >
+                </picture>
                 <div class="gallery-overlay-badge">
                   <span>✨ Tap to view</span>
                 </div>
@@ -408,12 +495,16 @@ Lastly, I just want to say: I love you so much, Tazmeen.</p>
             </div>
                       <div class="gallery-item reveal-on-scroll delay-1" data-index="12">
               <div class="gallery-thumb-wrapper">
-                <img 
-                  src="images/Snapchat-1271676970.jpg" 
-                  alt="Ahhh I just love your faceee! I will never get bored of your face. If there was a condition that I could only see one face for my whole life, I would gladly say yours. Love you! 🥹💖✨" 
-                  loading="lazy"
-                  decoding="async"
-                >
+                <picture>
+                                      <source srcset="images/Snapchat-1271676970.webp" type="image/webp">
+                                    <img 
+                    src="images/Snapchat-1271676970.jpg" 
+                    alt="Ahhh I just love your faceee! I will never get bored of your face. If there was a condition that I could only see one face for my whole life, I would gladly say yours. Love you! 🥹💖✨" 
+                    loading="eager"
+                    decoding="async"
+                    fetchpriority="auto"
+                  >
+                </picture>
                 <div class="gallery-overlay-badge">
                   <span>✨ Tap to view</span>
                 </div>
@@ -425,12 +516,16 @@ Lastly, I just want to say: I love you so much, Tazmeen.</p>
             </div>
                       <div class="gallery-item reveal-on-scroll delay-2" data-index="13">
               <div class="gallery-thumb-wrapper">
-                <img 
-                  src="images/Snapchat-1281220834.jpg" 
-                  alt="No one can match your sassiness! You are a queen, most beautiful and sexyy, no one can match your sexiness 🙈 muweheh, love you! 👑💋❤️" 
-                  loading="lazy"
-                  decoding="async"
-                >
+                <picture>
+                                      <source srcset="images/Snapchat-1281220834.webp" type="image/webp">
+                                    <img 
+                    src="images/Snapchat-1281220834.jpg" 
+                    alt="No one can match your sassiness! You are a queen, most beautiful and sexyy, no one can match your sexiness 🙈 muweheh, love you! 👑💋❤️" 
+                    loading="eager"
+                    decoding="async"
+                    fetchpriority="auto"
+                  >
+                </picture>
                 <div class="gallery-overlay-badge">
                   <span>✨ Tap to view</span>
                 </div>
@@ -442,12 +537,16 @@ Lastly, I just want to say: I love you so much, Tazmeen.</p>
             </div>
                       <div class="gallery-item reveal-on-scroll delay-3" data-index="14">
               <div class="gallery-thumb-wrapper">
-                <img 
-                  src="images/Snapchat-1432715714.jpg" 
-                  alt="Ahhh the cutest faceeeee! I loveee this soooo muchhhhh, it’s just so kissable! I wanna shower your face with kisses... mwah! Love you 😚💋🥰❤️" 
-                  loading="lazy"
-                  decoding="async"
-                >
+                <picture>
+                                      <source srcset="images/Snapchat-1432715714.webp" type="image/webp">
+                                    <img 
+                    src="images/Snapchat-1432715714.jpg" 
+                    alt="Ahhh the cutest faceeeee! I loveee this soooo muchhhhh, it’s just so kissable! I wanna shower your face with kisses... mwah! Love you 😚💋🥰❤️" 
+                    loading="eager"
+                    decoding="async"
+                    fetchpriority="auto"
+                  >
+                </picture>
                 <div class="gallery-overlay-badge">
                   <span>✨ Tap to view</span>
                 </div>
@@ -459,12 +558,16 @@ Lastly, I just want to say: I love you so much, Tazmeen.</p>
             </div>
                       <div class="gallery-item reveal-on-scroll delay-4" data-index="15">
               <div class="gallery-thumb-wrapper">
-                <img 
-                  src="images/Snapchat-1552855786.jpg" 
-                  alt="How beautiful! Even when your face is relaxed, you can see all your facial features and look how beautiful you are... can’t get over you. Love you! 🥹✨💖" 
-                  loading="lazy"
-                  decoding="async"
-                >
+                <picture>
+                                      <source srcset="images/Snapchat-1552855786.webp" type="image/webp">
+                                    <img 
+                    src="images/Snapchat-1552855786.jpg" 
+                    alt="How beautiful! Even when your face is relaxed, you can see all your facial features and look how beautiful you are... can’t get over you. Love you! 🥹✨💖" 
+                    loading="eager"
+                    decoding="async"
+                    fetchpriority="auto"
+                  >
+                </picture>
                 <div class="gallery-overlay-badge">
                   <span>✨ Tap to view</span>
                 </div>
@@ -476,12 +579,16 @@ Lastly, I just want to say: I love you so much, Tazmeen.</p>
             </div>
                       <div class="gallery-item reveal-on-scroll delay-1" data-index="16">
               <div class="gallery-thumb-wrapper">
-                <img 
-                  src="images/Snapchat-1644708708.jpg" 
-                  alt="The eyesss, chico! These eyes drive me crazyyy! Ahhh I love this woman sooo soo muchhh 👀🫠❤️" 
-                  loading="lazy"
-                  decoding="async"
-                >
+                <picture>
+                                      <source srcset="images/Snapchat-1644708708.webp" type="image/webp">
+                                    <img 
+                    src="images/Snapchat-1644708708.jpg" 
+                    alt="The eyesss, chico! These eyes drive me crazyyy! Ahhh I love this woman sooo soo muchhh 👀🫠❤️" 
+                    loading="eager"
+                    decoding="async"
+                    fetchpriority="auto"
+                  >
+                </picture>
                 <div class="gallery-overlay-badge">
                   <span>✨ Tap to view</span>
                 </div>
@@ -493,12 +600,16 @@ Lastly, I just want to say: I love you so much, Tazmeen.</p>
             </div>
                       <div class="gallery-item reveal-on-scroll delay-2" data-index="17">
               <div class="gallery-thumb-wrapper">
-                <img 
-                  src="images/Snapchat-1650370381.jpg" 
-                  alt="The face of a mastkhorr cat! I love this woman sooo much, you can’t be mad at this lady — like who even can? Hope you stay happy and live a life filled with joy. Love you! 🐱🐾✨❤️" 
-                  loading="lazy"
-                  decoding="async"
-                >
+                <picture>
+                                      <source srcset="images/Snapchat-1650370381.webp" type="image/webp">
+                                    <img 
+                    src="images/Snapchat-1650370381.jpg" 
+                    alt="The face of a mastkhorr cat! I love this woman sooo much, you can’t be mad at this lady — like who even can? Hope you stay happy and live a life filled with joy. Love you! 🐱🐾✨❤️" 
+                    loading="eager"
+                    decoding="async"
+                    fetchpriority="auto"
+                  >
+                </picture>
                 <div class="gallery-overlay-badge">
                   <span>✨ Tap to view</span>
                 </div>
@@ -510,12 +621,16 @@ Lastly, I just want to say: I love you so much, Tazmeen.</p>
             </div>
                       <div class="gallery-item reveal-on-scroll delay-3" data-index="18">
               <div class="gallery-thumb-wrapper">
-                <img 
-                  src="images/Snapchat-2069483531.jpg" 
-                  alt="Ahhh I just want this smile to never leave your face, it stays the same and you live your life happily, and just love meee, no one elsee! I want you to just look at me, no one elsee, and kiss me soo much. I love you soo much, Tazmeen! 🥹💋🥰❤️" 
-                  loading="lazy"
-                  decoding="async"
-                >
+                <picture>
+                                      <source srcset="images/Snapchat-2069483531.webp" type="image/webp">
+                                    <img 
+                    src="images/Snapchat-2069483531.jpg" 
+                    alt="Ahhh I just want this smile to never leave your face, it stays the same and you live your life happily, and just love meee, no one elsee! I want you to just look at me, no one elsee, and kiss me soo much. I love you soo much, Tazmeen! 🥹💋🥰❤️" 
+                    loading="eager"
+                    decoding="async"
+                    fetchpriority="auto"
+                  >
+                </picture>
                 <div class="gallery-overlay-badge">
                   <span>✨ Tap to view</span>
                 </div>
@@ -742,7 +857,7 @@ Lastly, I just want to say: I love you so much, Tazmeen.</p>
     </div>
   </div>
 
-  <!-- JavaScript (Cache Busted) -->
-  <script src="script.js?v=4.0"></script>
+  <!-- JavaScript (Cache Busted v5.0) -->
+  <script src="script.js?v=5.0"></script>
 </body>
 </html>
