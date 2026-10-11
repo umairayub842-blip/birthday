@@ -118,8 +118,8 @@ $wish_reveal_body  = "Close your eyes, take a gentle breath, and make the bigges
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Sacramento&display=swap" rel="stylesheet">
 
-  <!-- Stylesheet -->
-  <link rel="stylesheet" href="style.css">
+  <!-- Stylesheet (Cache Busted) -->
+  <link rel="stylesheet" href="style.css?v=4.0">
 </head>
 <body>
 
@@ -463,7 +463,7 @@ $wish_reveal_body  = "Close your eyes, take a gentle breath, and make the bigges
     </div>
   </div>
 
-  <!-- JavaScript -->
-  <script src="script.js"></script>
+  <!-- JavaScript (Cache Busted) -->
+  <script src="script.js?v=4.0"></script>
 </body>
 </html>
